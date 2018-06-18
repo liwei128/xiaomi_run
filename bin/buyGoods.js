@@ -62,7 +62,7 @@ function buyGoods(goodsUrl,selectList){
 						$(".list-wrap#J_list >div").eq(i).children("ul").children("li").eq(j).click(); 
 					},selectList[index].index,selectList[index].value);
 					index++;
-				},800*i);
+				},1000*i);
 			}
             //提交购物车
             setTimeout(function(){
@@ -70,12 +70,12 @@ function buyGoods(goodsUrl,selectList){
                 page.evaluate(function(){
                 	$("#J_buyBtnBox>li>a").click();
                 }); 
-            },800*selectList.length) ;
+            },1000*selectList.length) ;
 			//退出
 			setTimeout(function(){
 				console.log(JSON.stringify(buyUrl));
                phantom.exit();
-            },800*(selectList.length+1)) ;
+            },1000*(selectList.length+1)) ;
         },1000);
 		
     });
