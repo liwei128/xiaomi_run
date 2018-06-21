@@ -5,15 +5,6 @@ var index = 0;
 var buyUrl = []; 
 
 
-var settings = {
-  operation: "GET",
-  encoding: "utf-8",
-  headers: {
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.170 Safari/537.36"
-  }
-}; 
-
 function setCookies(){
     var jsonList = user.cookies;
     jsonList.forEach(function(cook){  
@@ -51,7 +42,7 @@ function start(goodsUrl,selectList){
 
 function buyGoods(goodsUrl,selectList){
 	var s= new Date().getTime();
-    page.open(goodsUrl,settings,function (status) { 
+    page.open(goodsUrl,function (status) { 
         setTimeout(function(){
              page.injectJs("./zepto.min.js",function(){
              });
