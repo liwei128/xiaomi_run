@@ -32,7 +32,6 @@ function submitOrder(){
              });
 			//提交购物车
 			setCookies();
-			page.render("1.png"); 
 			var isEmpty = page.evaluate(function(i,j){
 				if($("#J_cartEmpty").hasClass("hide")){
 					$("#J_goCheckout").click();
