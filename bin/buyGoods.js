@@ -2,7 +2,6 @@ var fs = require('fs');
 var goodsInfo = JSON.parse(fs.read(fs.workingDirectory+'/config/goodsInfo.json'));
 var user = JSON.parse(fs.read(fs.workingDirectory+'/config/user.json'));
 var index = 0;
-var buyUrl = []; 
 
 
 function setCookies(){
@@ -28,7 +27,7 @@ page.onAlert = function(test){
 page.onResourceRequested = function(requestData,networkRequest){
 	var fdStart = requestData.url.indexOf("https://cart.mi.com/cart/add/");
 	if(fdStart == 0){
-		buyUrl[buyUrl.length] = requestData.url;
+		console.log(requestData.url);
 		//networkRequest.abort();
 	}
 
@@ -64,7 +63,6 @@ function buyGoods(goodsUrl,selectList){
             },1000*selectList.length) ;
 			//退出
 			setTimeout(function(){
-				console.log(JSON.stringify(buyUrl));
                phantom.exit();
             },1000*(selectList.length+1)) ;
         },1000);

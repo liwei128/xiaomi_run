@@ -56,7 +56,7 @@ function submitOrder(){
 				},3000);
 				//退出
 				setTimeout(function(){
-					console.log("订单提交成功");
+					console.log("已提交订单");
 				   phantom.exit();
 				},3500) ;
 			}
