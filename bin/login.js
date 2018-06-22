@@ -37,7 +37,6 @@ function login(){
 				}
             });  
             if(loginStatus){
-				fs.write("ts.json",JSON.stringify(page.cookies),"w");
 				if(isSucess(page.cookies)){
 					console.log(JSON.stringify(page.cookies));
 				}else{
