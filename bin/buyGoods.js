@@ -28,7 +28,8 @@ page.onResourceRequested = function(requestData,networkRequest){
 	var fdStart = requestData.url.indexOf("https://cart.mi.com/cart/add/");
 	if(fdStart == 0){
 		console.log(requestData.url);
-		//networkRequest.abort();
+		networkRequest.abort();
+		phantom.exit();
 	}
 
 }

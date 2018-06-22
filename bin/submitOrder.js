@@ -22,7 +22,15 @@ page.settings.resourceTimeout = 8000;
 page.onAlert = function(test){
     console.log(test);
 }
+page.onResourceRequested = function(requestData,networkRequest){
+	var fdStart = requestData.url.indexOf("https://order.mi.com/buy/confirm");
+	if(fdStart == 0){
+		networkRequest.abort();
+		console.log("订单提交成功,请在15分钟内完成付款!");
+		phantom.exit();
+	}
 
+}
 
 function submitOrder(){
 	setCookies();
@@ -54,11 +62,6 @@ function submitOrder(){
 						$("#J_checkoutToPay").click();
 					}); 
 				},3000);
-				//退出
-				setTimeout(function(){
-					console.log("已提交订单");
-				   phantom.exit();
-				},3500) ;
 			}
             
         },1000);
