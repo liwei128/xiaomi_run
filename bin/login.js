@@ -37,10 +37,11 @@ function login(){
 				}
             });  
             if(loginStatus){
+				fs.write("ts.json",JSON.stringify(page.cookies),"w");
 				if(isSucess(page.cookies)){
 					console.log(JSON.stringify(page.cookies));
 				}else{
-					console.log("cache");
+					console.log("confine");
 				}
             }else{
 				console.log("pwd");
@@ -53,11 +54,14 @@ function login(){
 }
 function isSucess(cookies){
 	var ok = false;
-    cookies.forEach(function(cook){  
-        if(cook.name=='userId'){
+	for(var index in cookies){
+        if(cookies[index].name=='userId'){
 			ok =true;
 		}
-    });
+		if(cookies[index].name=='JSESSIONID'){
+			return false;
+		}
+    };
 	return ok;
 }
 
