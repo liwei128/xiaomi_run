@@ -1,3 +1,4 @@
+//获取商品详情
 var fs = require('fs');
 var system = require('system');
 var url = system.args[1];

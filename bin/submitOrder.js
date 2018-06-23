@@ -1,3 +1,4 @@
+//自动生成订单
 var fs = require('fs');
 var user = JSON.parse(fs.read(fs.workingDirectory+'/config/user.json'));
 var url = "https://static.mi.com/cart/";

@@ -1,3 +1,4 @@
+//获取加入购物车请求链接
 var fs = require('fs');
 var goodsInfo = JSON.parse(fs.read(fs.workingDirectory+'/config/goodsInfo.json'));
 var user = JSON.parse(fs.read(fs.workingDirectory+'/config/user.json'));
