@@ -885,5 +885,17 @@
 		"name": "米家小白智能摄像机",
 		"url": "https://item.mi.com/product/2723.html",
 		"version": []
+	},
+	"小米手环3": {
+		"color": ["黑色"],
+		"name": "小米手环3",
+		"url": "https://item.mi.com/product/8134.html",
+		"version": []
+	},
+	"小米手环2": {
+		"color": ["黑色"],
+		"name": "小米手环2",
+		"url": "https://item.mi.com/product/4565.html",
+		"version": []
 	}
 }
