@@ -1,6 +1,6 @@
-//获取所有商品链接
+//获取首页所有商品链接
 var fs = require('fs');
-var url = "https://www.mi.com/";
+var url = "https://www.mi.com/index.html";
 
 setTimeout(function () {
         phantom.exit();
