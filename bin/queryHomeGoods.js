@@ -16,7 +16,6 @@ page.onAlert = function(test){
 
 
 function queryGoodsList(){
-	var s= new Date().getTime();
     page.open(url,function (status) { 
 		page.injectJs("./zepto.min.js",function(){
 		});

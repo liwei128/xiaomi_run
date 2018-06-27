@@ -40,7 +40,6 @@ function start(){
 }
 
 function buyGoods(){
-	var s= new Date().getTime();
     page.open(goodsInfo.url,function (status) { 
         setTimeout(function(){
              page.injectJs("./zepto.min.js",function(){
