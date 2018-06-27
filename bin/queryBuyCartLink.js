@@ -66,7 +66,7 @@ function buyGoods(){
 			//退出
 			setTimeout(function(){
                phantom.exit();
-            },1000) ;
+            },1500) ;
         },1500);
 		
     });
