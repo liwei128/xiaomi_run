@@ -47,7 +47,7 @@ function login(){
 				console.log("pwd");
 			}
             phantom.exit();
-        }, 3000);
+        }, 2000);
     
     });
     
