@@ -18,24 +18,21 @@ page.onAlert = function(test){
 function queryGoodsList(){
 	var s= new Date().getTime();
     page.open(url,function (status) { 
-        setTimeout(function(){
-	        page.injectJs("./zepto.min.js",function(){
-	        });
-	        var goodsList = page.evaluate(function(){
-	        	var goodsList = [];
-		        $(".site-category-list>li").each(function(){
-					$(this).find("div.children>ul").each(function(){
-						$(this).find("li").each(function(){
-							goodsList[goodsList.length] = $(this).find("a").attr("href");
-						});
+		page.injectJs("./zepto.min.js",function(){
+		});
+		var goodsList = page.evaluate(function(){
+			var goodsList = [];
+			$(".site-category-list>li").each(function(){
+				$(this).find("div.children>ul").each(function(){
+					$(this).find("li").each(function(){
+						goodsList[goodsList.length] = $(this).find("a").attr("href");
 					});
-		        });
-		        return goodsList;
-	        });
-	        console.log(JSON.stringify(goodsList));
-	        phantom.exit();
-        },1000);
-		
+				});
+			});
+			return goodsList;
+		});
+		console.log(JSON.stringify(goodsList));
+		phantom.exit();
     });
 }
 queryGoodsList();
