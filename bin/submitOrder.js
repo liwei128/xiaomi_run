@@ -62,7 +62,7 @@ function submitOrder(){
 					page.evaluate(function(){
 						$("#J_checkoutToPay").click();
 					}); 
-				},2000);
+				},2500);
 			}
             
         },1000);
