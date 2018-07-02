@@ -1,7 +1,7 @@
 //自动生成订单
 var fs = require('fs');
 var user = JSON.parse(fs.read(fs.workingDirectory+'/config/user.json'));
-var url = "https://static.mi.com/cart/";
+var url = "https://order.mi.com/buy/checkout";
 
 function setCookies(){
     var jsonList = user.cookies;
@@ -10,6 +10,10 @@ function setCookies(){
         phantom.addCookie(cook);
     });
     phantom.cookiesEnabled = true;
+}
+
+function randomNum(){
+	return parseInt(9e4*Math.random()+1e4)+"."+parseInt((new Date).getTime()/1e3);
 }
 
 setTimeout(function () {
@@ -30,43 +34,28 @@ page.onResourceRequested = function(requestData,networkRequest){
 		console.log("订单提交成功,请在15分钟内完成付款!");
 		phantom.exit();
 	}
+	var cart = requestData.url.indexOf("https://static.mi.com/cart/");
+	if(cart == 0){
+		networkRequest.abort();
+		console.log("购物车为空");
+		phantom.exit();
+	}
 
 }
 
 function submitOrder(){
 	setCookies();
-    page.open(url,function (status) { 
-        setTimeout(function(){
-             page.injectJs("./zepto.min.js",function(){
-             });
-			//提交购物车
-			setCookies();
-			var isEmpty = page.evaluate(function(i,j){
-				if($("#J_cartEmpty").hasClass("hide")){
-					$("#J_goCheckout").click();
-					return false;
-				};
-				return true;
-				 
-			});
-			if(isEmpty){
-				console.log("购物车为空");
-				phantom.exit();
-			}else{
-				//提交订单
-				setTimeout(function(){
-					page.evaluate(function(){
-						$("#J_addressList>div").eq(0).click();
-					}); 
-					setCookies(); 
-					page.evaluate(function(){
-						$("#J_checkoutToPay").click();
-					}); 
-				},3000);
-			}
-            
-        },1000);
-		
+	var rUrl = url+"?r="+randomNum();
+    page.open(rUrl,function (status) { 
+		page.injectJs("./zepto.min.js",function(){
+		});
+		page.evaluate(function(){
+			$("#J_addressList>div").eq(0).click();
+		}); 
+		setCookies(); 
+		page.evaluate(function(){
+			$("#J_checkoutToPay").click();
+		}); 
     });
 }
 submitOrder();
